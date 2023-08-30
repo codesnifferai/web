@@ -1,17 +1,20 @@
-<div class="form-group">
-<form method="post">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <input type="submit" />
-</form>
-</div>
-{% if code_analysis_result %}
-    <ul>
-    {% for key, values in code_analysis_result.items %}
-        <li>{{ key }}: {{ values|floatformat:2 }}</li>
-    {% endfor %}
-    </ul>
-{% else %}
-    <p>No data are available.</p>
-{% endif %}
+{% extends "../base.html" %}
+{% block title %} Code Sniffer AI - Home {% endblock %}
+{% block content %}
 
+<section class="section-header overflow-hidden bg-primary text-white">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text-center">
+                <h1 class="fw-bolder">Code Sniffer AI</h1>
+                <h2 class="lead fw-normal text-muted mb-5">
+                    Open-source Project
+                </h2>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}
