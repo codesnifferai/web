@@ -26,5 +26,5 @@ $
 $ # Start the app - custom port
 $ # python manage.py runserver 0.0.0.0:<your_port>
 $
-$ # Access the web app in browser: http://127.0.0.1:8000/
+$ # Access the home app in browser: http://127.0.0.1:8000/
 ```

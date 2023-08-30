@@ -4,16 +4,21 @@
     <div class="form-group">
         <form method="post">
             {% csrf_token %}
-            {{ form.as_p }}
-            <input type="submit"/>
+            <div class="form-group">
+                <label for="code">Code</label>
+                 <textarea class="form-control" name="code" rows="10" required="" id="id_code">{{ code }}</textarea>
+                <small id="emailHelp" class="form-text text-muted">add your code in java.</small>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
     {% if code_analysis_result %}
-        <ul>
+        <dl class="row">
             {% for key, values in code_analysis_result.items %}
-                <li>{{ key }}: {{ values|floatformat:2 }}</li>
+                <dt class="col-sm-3">{{ key }}</dt>
+                <dd class="col-sm-9">{{ values|floatformat:2 }}</dd>
             {% endfor %}
-        </ul>
+        </dl>
     {% else %}
         <p>No data are available.</p>
     {% endif %}

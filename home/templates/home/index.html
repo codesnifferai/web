@@ -1,7 +1,8 @@
 {% extends "../base.html" %}
+{% load humanize %}
 {% block title %} Code Sniffer AI - Home {% endblock %}
 {% block content %}
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha512-s+xg36jbIujB2S2VKfpGmlC3T5V2TF3lY48DX7u2r9XzGzgPsa6wTpOQA7J9iffvdeBN0q9tKzRxVxw1JviZPg==" crossorigin="anonymous"></script>
 <section class="section-header overflow-hidden bg-primary text-white">
     <div class="container">
         <div class="row">
@@ -15,6 +16,21 @@
     </div>
 </section>
 
-
+<canvas id="dashboard" width="100" height="30vh"></canvas>
+    <script>
+    var df = {{ df|safe }};
+    var df_labels = {{ df_labels|safe }};
+    var ctx = document.getElementById('dashboard').getContext('2d');
+    var vChart = new Chart(ctx, {
+       type: 'bar',
+       data: {
+           labels: df_labels,
+           datasets: [{
+               label: "Code Smells Types",
+               data: df
+           }]
+       }
+    });
+    </script>
 
 {% endblock %}
