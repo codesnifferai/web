@@ -29,11 +29,19 @@ $
 $ # Access the home app in browser: http://127.0.0.1:8000/
 ```
 
+## Using by composer
+
+```bash
+$ docker-compose up
+# Access the home app in browser: http://127.0.0.1:8000/ or 
+# http://localhost:8000/api/v1/codesnifferai/
+```
+
 ## API Rest
 - Url:  http://localhost:8000/api/v1/codesnifferai/
 ```bash
 # Execute by Curl
-curl --location 'http://localhost:8000/api/v1/codesnifferai/' \
+$ curl --location 'http://localhost:8000/api/v1/codesnifferai/' \
 --header 'Content-Type: application/json' \
 --data '{
     "code": "code to analise"
