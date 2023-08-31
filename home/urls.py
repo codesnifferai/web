@@ -13,7 +13,7 @@ from home.api import views as api_view
 urlpatterns = [
     path("", views.index, name="index"),
     path("code/", views.code, name="code"),
-    path('v1/api/', api_view.HomeAPIVew.as_view(), name="api"),
+    path('api/v1/codesnifferai/', api_view.HomeAPIVew.as_view(), name="CodeSnifferAi"),
 
     # path('', include(route.urls))
 ]
