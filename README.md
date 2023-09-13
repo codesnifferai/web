@@ -2,8 +2,8 @@
 
 ```bash
 $ # Get the code
-$ git clone https://github.com/elsvital/codesnifferai.git
-$ cd codesnifferai
+$ git clone https://github.com/codesnifferai/web
+$ cd web
 $
 $ # Virtualenv modules installation (Unix based systems)
 $ virtualenv env
