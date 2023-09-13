@@ -1,6 +1,6 @@
 ## About
 
-This repository mantains the code for the CodeSnifferAI Web Application. For more information visit [https://github.com/codesnifferai/codesnifferai](the main repository).
+This repository mantains the code for the CodeSnifferAI Web Application. For more information visit [the main repository](https://github.com/codesnifferai/codesnifferai).
 
 ## How to use it
 
