@@ -1,3 +1,7 @@
+## About
+
+This repository mantains the code for the CodeSnifferAI Web Application. For more information visit [https://github.com/codesnifferai/codesnifferai](the main repository).
+
 ## How to use it
 
 ```bash
