@@ -13,12 +13,12 @@
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
-<div class="container">
+<main role= "main" class="container-fluid">
     {% include "_topbar.html" %}
-
     {% block content %}
     {% endblock %}
-</div>
+    {% include "_footer.html" %}
+</main>
 <script src="{% static 'js/scripts.js' %}"></script>
 </body>
 <script src="https://code.jquery.com/jquery-3.4.0.min.js" integrity="sha256-BJeo0qm959uMBGb65z40ejJYGSgR7REI4+CW1fNKwOg="  crossorigin="anonymous"></script>
