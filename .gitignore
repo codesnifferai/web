@@ -7,3 +7,6 @@ home/migrations/__pycache__/*
 venv/*
 .idea/*
 static/trained_model/*
+env/*
+.idea/*
+__pycache__/

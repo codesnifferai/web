@@ -1,0 +1,59 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeSnifferAI - Home</title>
+    <link rel="stylesheet" href="newstyle.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/newstyle.css' %}">
+</head>
+<body>
+    <div class="panel-left">
+        <div class="color"></div>
+        <div class="color2"></div>
+        <div class="logo-container">
+            <div class="logo-image logo-item">
+                <svg id="circle-logo" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M64 32C64 49.6731 49.6731 64 32 64C14.3269 64 0 49.6731 0 32C0 14.3269 14.3269 0 32 0C49.6731 0 64 14.3269 64 32Z" fill="white"/>
+                    <image id="java-nose-logo" xlink:href="{% static "images/your-logo.png" %}" x="13.367" y="6.6235">
+                </svg>
+            </div>
+            <h1 class="logo-item font-logo">CodeSnifferAI</h1>
+        </div>
+        <ul class="ul-container">
+            <li>
+                <h1 class="font-header">A Java smell analyzer</h1>
+                <p class="font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+            </li>
+            <li>
+                <h1 class="font-header">Powered by AI</h1>
+                <p class="font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+            </li>
+            <li>
+                <h1 class="font-header">Free Open Software</h1>
+                <p class="font-normal">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+            </li>
+        </ul>
+    </div>
+    <div class="panel-right">
+        <div class="github-container">
+            <a id="github-logo" href="https://github.com/codesnifferai/codesnifferai">
+                <img src="{% static "images/0b5a602c26d2ba5fa891f0538cd1501b.png" %}" alt="CodeSnifferAI's repository on GitHub.">
+            </a>
+        </div>
+        <div class="buttons-container">
+            <a id="try-it" class="font-header" href="{% url "code" %}">
+                Try it
+            </a>
+            <a id="rest-api" class="font-header" href="{% url "CodeSnifferAi" %}">
+                REST API
+            </a>
+            <a id="learn-more" class="font-header" href="https://github.com/codesnifferai/codesnifferai#readme">
+                learn more
+            </a>
+        </div>
+    </div>
+</body>
+</html>

@@ -52,7 +52,7 @@ def index(request):
         df_labels = df.name.tolist()
         df = df['value'].tolist()
 
-    template = loader.get_template("home/index.html")
+    template = loader.get_template("home/newindex.html")
     context = {
         'df': df,
         'df_labels': df_labels
