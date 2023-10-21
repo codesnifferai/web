@@ -2,9 +2,9 @@
 # Name of the application
 NAME="CodeSnifferAI"
 # Django project directory
-DJANGODIR=/codesnifferai
+DJANGODIR=/codesnifferai/web
 # we will communicte using this unix socket
-SOCKFILE=/codesnifferai/run/gunicorn.sock
+SOCKFILE=/codesnifferai/web/run/gunicorn.sock
 # the user to run as
 USER=ubuntu
 # the group to run as

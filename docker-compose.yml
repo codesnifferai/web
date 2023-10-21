@@ -1,7 +1,8 @@
+#Copy to codesnifferai/docker-composer.yml
 version: '3.2'
 services:
-    codesnifferai:
-        working_dir: /codesnifferai
+    web-app:
+        working_dir: /web
         build: .
         volumes:
             - .:/codesnifferai
