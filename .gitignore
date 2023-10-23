@@ -1,4 +1,9 @@
 .DS_Store/*
+IACode/__pycache__/*
+core/__pycache__/*
+home/__pycache__/*
+home/api/__pycache__/*
+home/migrations/__pycache__/*
 venv/*
 .idea/*
 static/trained_model/*
