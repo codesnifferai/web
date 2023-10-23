@@ -1,20 +1,17 @@
 # -*- coding: utf-8 -*-
 
+from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Avg, Count
-from django.template import RequestContext
 from django.http import HttpResponse
 from django.template import loader
-from django.template.defaultfilters import floatformat
 
 from IACode.sniffer import Sniffer
 from home.forms import HomeForm
 from .models import CodeSnippet, Scores
 import pandas as pd
 
+@csrf_exempt
 def code(request):
-    model = CodeSnippet
-    form_class = HomeForm
-    template_name = 'home/index.html'
 
     code_analysis_result = None
     code = None
@@ -30,6 +27,7 @@ def code(request):
 
         code_analysis_result = Sniffer.CodeAnalysis(code)
         for d in code_analysis_result:
+            print(d)
             scores = Scores()
             scores.name = d
             scores.code = cs
