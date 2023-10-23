@@ -23,20 +23,6 @@
     letter-spacing: 1px;
 }
 
-/* .stilus{
-    background-color: blueviolet;
-}
-
-#teste {
-    color:aqua;
-    border: 2px solid red;
-    background-color: aqua;
-}
-
-#pteste {
-    color: greenyellow;
-}
-
 .title-font {
     color: white;
     font: 32px Roboto, sans-serif;
@@ -44,6 +30,24 @@
     font-weight: 700;
 }
 
-* {
-    border: 2px solid red;
-} */
+.white-font{
+    color: white;
+    font: 15px Roboto, sans-serif;
+    font-style: normal;
+    font-weight: 700;
+}
+
+.CodeMirror {
+    height: auto;
+}
+
+.panel {
+    display: flex;
+}
+
+body {
+    height: 100vh;
+    width: 100vw;
+    padding: 0px;
+    margin: 0px;
+}
