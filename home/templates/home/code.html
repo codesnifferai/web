@@ -1,6 +1,7 @@
 {% extends "../base.html" %}
 {% block title %} Code Sniffer AI - Home {% endblock %}
 {% block content %}
+
 {% comment %} 
 List of beatiful colors:
 
@@ -27,7 +28,7 @@ performance
 
 <div class="row h-100">
     <div class="col-sm-6" style = "background-color:slategrey; padding: 0">
-        <form class="h-100" method="post" style = "background-color: ">
+        <form class="container h-100" method="post" style = "background-color: ">
             {% csrf_token %}
             <div class="h-100 d-flex flex-column form-group" style= "background-color: " >
                 <div class = "row">
@@ -47,45 +48,78 @@ performance
             </div> 
         </form>
     </div>
-    <div class="col-sm-6  h-100" style = "padding: 0;background-color: #1759B0">
-        <div class="h-100" style= "background-color: " >
+    <div class="col-sm-6 h-100" style = "padding: 0;background-color: #1759B0">
+        <div class="container h-100 d-flex flex-column overflow-hidden" style= "background-color: " >
 
             {% comment %} Title CodeSnifferAI {% endcomment %}
-            <div class="row py-3"style="text-align: center ">
+            <div class=" py-3"style="text-align: center ">
                 <label for="code" style = "color: white; font: 32px Roboto, sans-serif; ;font-style: normal;font-weight: 700">CodeSnifferAI</label>    
-            </div>
+            </div> 
 
-            {% comment %} Container para display de scores e valores {% endcomment %}
-            <div class = "row  px-3" style="background-color: ">
-                <div class = "container" style = "padding:0 ;background-color: white">
-                    <div class = "px-3 py-2">
-                        <p1 style="color: black; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
-                            Analize of Smells
-                        </p1>
+            {% comment %} Container para conteudo de CodeSnifferAI {% endcomment %} 
+            <div class ="overflow-auto"  style="flex:1">
+                <div class = "row px-3" style="background-color: ">
+                    
+                    {% comment %} Chart {% endcomment %}
+                    <div class="container mb-3 d-flex flex-column" style = "padding:0 ;background-color: white">
+                        <div class ="p-3">
+                            <p1 style="color: black; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
+                                Code Comparison
+                            </p1>
+                        </div>
+                        <div class="border" style="flex:1 ">
+                            <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                        </div>
                     </div>
-                    {% if code_analysis_result %}
-                    <div class = "border" style = "background-color: ">
-                        {% for key, values in code_analysis_result.items %}
-                            <div class = "row mx-2 my-2" style = "padding:0">
-                                <div class = " col-4 py-2" style= "background-color: ">
-                                    <p1 >{{ key }}</p1>
-                                </div>
-                                <div class = "col-8 pr-5 d-flex justify-content-center align-items-center" style= " padding: 0; background-color: ">
-                                    <p1 class= "position-absolute" style="color: CornflowerBlue">{{ values|floatformat:2 }}</p1>
+                        
+                    {% comment %} Data colected {% endcomment %}
+                    <div class = "container mb-3" style = "padding:0 ;background-color: white">
+                        <div class =" p-3">
+                            <p1 style="color: black; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
+                                Analize of Smells
+                            </p1>
+                        </div>
+                        {% if code_analysis_result %}
+                        <div class = "border" style = "background-color: ">
+                            {% for key, values in code_analysis_result.items %}
+                                <div class = "row mx-2 my-2" style = "padding:0">
+                                    <div class = " col-4 py-2" style= "background-color: ">
+                                        <p1 >{{ key }}</p1>
+                                    </div>
+                                    <div class = "col-8 pr-5 d-flex justify-content-center align-items-center" style= " padding: 0; background-color: ">
+                                        <p1 class= "" style="color: CornflowerBlue">{{ values|floatformat:2 }}</p1>
 
-                                    <div class = "border d-flex justify-content-start align-items-center h-100 w-100  " >
-                                        <div class=" mx-2" style="background-color: PaleGreen; width: 100%; height:50%; padding: 0"></div>
+                                        <div class = "border d-flex justify-content-start align-items-center h-100 w-100  " >
+                                            <div class=" mx-2" style="background-color: PaleGreen; width: 100%; height:50%; padding: 0"></div>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                        {% endfor %}
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                        <p style= "height: 200px">No data are available.</p>
+                        {% endif %}
                     </div>
-                    {% else %}
-                    <p>No data are available.</p>
-                    {% endif %}
+
+                    {% comment %} Each Smell  {% endcomment %}
+                    <div class="row mb-3 " style = "padding:0 ;background-color: ">
+                        {% with list="123456"%}    
+                            {% for i in list %}    
+                            <div class="col-6 col-xl-4  p-1" style="padding:0">
+                                <div class =" p-3 bg-black" style = "padding:0; text-align:center">
+                                    <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
+                                        Brain Class
+                                    </p1>
+                                </div>
+                                <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
+                                    <p1>&emsp;{%lorem%}</p1>
+                                </div>
+                            </div>
+                            {%endfor%}
+                        {%endwith%}
+                    </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>
@@ -97,6 +131,78 @@ performance
     });
     editor.setSize("100%", "100%");
 </script>
+
+<script>
+    const labels = [
+        "readability",
+        "consistency",
+        "modularity",
+        "maintainability",
+        "testability",
+        "performance",];
+
+    const values = [55, 49, 44, 24, 15,12,12,13];
+    const opBg = 1
+    const bgColor = [
+        'rgba(255, 99, 132, '+opBg+')',
+        'rgba(255, 159, 64, '+opBg+')',
+        'rgba(255, 205, 86, '+opBg+')',
+        'rgba(75, 192, 192, '+opBg+')',
+        'rgba(54, 162, 235, '+opBg+')',
+        'rgba(153, 102, 255, '+opBg+')',
+        'rgba(201, 203, 207, '+opBg+')'];
+    
+    const opBd = 0.2
+    const bdColor = [
+        'rgb(255, 99, 132,'+opBd+')',
+        'rgb(255, 159, 64,'+opBd+')',
+        'rgb(255, 205, 86,'+opBd+')',
+        'rgb(75, 192, 192,'+opBd+')',
+        'rgb(54, 162, 235,'+opBd+')',
+        'rgb(153, 102, 255,'+opBd+')',
+        'rgb(201, 203, 207,'+opBd+')']
+
+    const dataset1 = {
+        axis: 'y',
+        label:'code 1.0',
+        backgroundColor: bgColor,
+        data: values,
+        borderColor: bdColor}
+    
+    const dataset2 = {
+        axis: 'y',
+        label:'code 1.1',
+        backgroundColor: bgColor,
+        data: values,
+        borderColor: bdColor}
+        
+    const data = {
+        labels: labels,
+        datasets: [dataset1,dataset2]
+    }
+    
+    const config = {
+        type: "bar",
+        data: data,
+        options: {
+            indexAxis: 'y',
+            elements: {
+                bar: {
+                    borderWidth:2,
+                }
+            },
+            responsive: true,
+            plugins: {
+                legend:{
+                    position:'bottom',
+                }
+            }
+        }
+        }
+    
+    new Chart("myChart",config); 
+</script>
+
 
 
 {% endblock %}
