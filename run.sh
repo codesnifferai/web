@@ -1,12 +1,12 @@
 #!/bin/bash
 
 
-pip instal django
-pip instal djangorestframework
-pip instal torch
-pip install -U sentence-transformers
-conda install -c conda-forge sentence-transformers
-pip install -e
+# pip instal django
+# pip instal djangorestframework
+# pip instal torch
+# pip install -U sentence-transformers
+# conda install -c conda-forge sentence-transformers
+# pip install -e
 
 virtualenv env
 source env/bin/activate

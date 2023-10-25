@@ -1,6 +1,7 @@
 {% extends "../base.html" %}
 {% block title %} Code Sniffer AI - Home {% endblock %}
 {% block content %}
+{%load static%}
 
 {% comment %} 
 List of beatiful colors:
@@ -32,8 +33,8 @@ performance
             {% csrf_token %}
             <div class="h-100 d-flex flex-column form-group" style= "background-color: " >
                 <div class = "row">
-                    <a  class = "position-absolute px-3 py-3"href="localhost:8000/" style = "background-color: ; width: 80px">
-                        <img src="../../static/home_FILL0_wght400_GRAD0_opsz24.svg" width="40"></img>
+                    <a  class = "position-absolute px-3 py-3" href="{% url "index" %}" style = "background-color: ; width: 80px">
+                        <img src={% static "/home_FILL0_wght400_GRAD0_opsz24.svg"%} width="40"></img>
                     </a>
                     <div class="py-3 d-flex justify-content-center " >
                         <label class="title-font" for="code" style="background-color: ;">Java Class</label>
@@ -50,7 +51,7 @@ performance
     </div>
     <div class="col-sm-6 h-100" style = "padding: 0;background-color: #1759B0">
         <div class="container h-100 d-flex flex-column overflow-hidden" style= "background-color: " >
-
+            
             {% comment %} Title CodeSnifferAI {% endcomment %}
             <div class=" py-3"style="text-align: center ">
                 <label for="code" style = "color: white; font: 32px Roboto, sans-serif; ;font-style: normal;font-weight: 700">CodeSnifferAI</label>    
