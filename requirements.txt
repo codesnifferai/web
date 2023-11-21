@@ -10,6 +10,7 @@ markdown==3.4.4
 pandas==2.1.0
 django-group-by==0.3.1
 gunicorn==20.1.0
+chartkick
 
 # AI - Model
 anyio==4.0.0
