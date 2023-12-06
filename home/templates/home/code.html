@@ -62,6 +62,7 @@ performance
                     <div class = "row px-3" style="background-color: ">
                         
                         {% comment %} Chart {% endcomment %}
+                        {% comment %}
                         <div class="container mb-3 d-flex flex-column" style = "padding:0 ;background-color: white">
                             <div class ="p-3">
                                 <p1 style="color: black; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
@@ -72,12 +73,12 @@ performance
                                 <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
                             </div>
                         </div>
-                            
+                        {% endcomment %} 
                         {% comment %} Data colected {% endcomment %}
                         <div class = "container mb-3" style = "padding:0 ;background-color: white">
                             <div class =" p-3">
                                 <p1 style="color: black; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
-                                    Analize of Smells
+                                    Smell analisis
                                 </p1>
                             </div>
                             {% if code_analysis_result %}
@@ -98,26 +99,110 @@ performance
                                 {% endfor %}
                             </div>
                             {% else %}
-                            <p style= "height: 200px">No data are available.</p>
+                            <p style= "height: 200px">No data is available.</p>
                             {% endif %}
                         </div>
 
                         {% comment %} Each Smell  {% endcomment %}
                         <div class="row mb-3 " style = "padding:0 ;background-color: ">
-                            {% with list="123456"%}    
-                                {% for i in list %}    
-                                <div class="col-6 col-xl-4  p-1" style="padding:0">
-                                    <div class =" p-3 bg-black" style = "padding:0; text-align:center">
-                                        <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
-                                            Brain Class
-                                        </p1>
-                                    </div>
-                                    <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
-                                        <p1>&emsp;{%lorem%}</p1>
+                            <label for="suggestions" style="text-align: center; color: white; font: 32px Roboto, sans-serif ;font-style: normal;font-weight: 700">Suggestions</label>
+                                <div class="col-6 col-xl-3  p-1" style="padding:0">
+                                    {% comment %} Classes' smell {% endcomment %}
+                                    <div>
+                                        <div class ="pt-3 pb-3 bg-black" style = "padding:0; text-align:center">
+                                            <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
+                                                Brain Class
+                                            </p1>
+                                        </div>
+                                        <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
+                                            <p1>&emsp;{%lorem%}</p1>
+                                        </div>
                                     </div>
                                 </div>
-                                {%endfor%}
-                            {%endwith%}
+                                <div class="col-6 col-xl-3  p-1" style="padding:0">
+                                    <div>
+                                        <div class ="pt-3 pb-3 bg-black" style = "padding:0; text-align:center">
+                                            <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
+                                                Data Class
+                                            </p1>
+                                        </div>
+                                        <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
+                                            <p1>&emsp;{%lorem%}</p1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-xl-3  p-1" style="padding:0">
+                                    <div>
+                                        <div class ="pt-3 pb-3 bg-black" style = "padding:0; text-align:center">
+                                            <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
+                                                Futile Abstract Pipeli
+                                            </p1>
+                                        </div>
+                                        <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
+                                            <p1>&emsp;{%lorem%}</p1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-xl-3  p-1" style="padding:0">
+                                    <div>
+                                        <div class ="pt-3 pb-3 bg-black" style = "padding:0; text-align:center">
+                                            <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
+                                                Futile Hierarch
+                                            </p1>
+                                        </div>
+                                        <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
+                                            <p1>&emsp;{%lorem%}</p1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-xl-3  p-1" style="padding:0">
+                                    <div>
+                                        <div class ="pt-3 pb-3 bg-black" style = "padding:0; text-align:center">
+                                            <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
+                                                God Class
+                                            </p1>
+                                        </div>
+                                        <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
+                                            <p1>&emsp;{%lorem%}</p1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-xl-3  p-1" style="padding:0">
+                                    <div>
+                                        <div class ="pt-3 pb-3 bg-black" style = "padding:0; text-align:center">
+                                            <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
+                                                Hierarchy Duplication
+                                            </p1>
+                                        </div>
+                                        <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
+                                            <p1>&emsp;{%lorem%}</p1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-xl-3  p-1" style="padding:0">
+                                    <div>
+                                        <div class ="pt-3 pb-3 bg-black" style = "padding:0; text-align:center">
+                                            <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
+                                                Model Class
+                                            </p1>
+                                        </div>
+                                        <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
+                                            <p1>&emsp;{%lorem%}</p1>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-6 col-xl-3  p-1" style="padding:0">
+                                    <div>
+                                        <div class ="pt-3 pb-3 bg-black" style = "padding:0; text-align:center">
+                                            <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
+                                                Schizofrenic Class
+                                            </p1>
+                                        </div>
+                                        <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
+                                            <p1>&emsp;{%lorem%}</p1>
+                                        </div>
+                                    </div>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -127,10 +212,12 @@ performance
 </main>
 <script>
     var editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
+        value: "public class Example {\n}\n",
         mode: "text/x-java", // Set the syntax highlighting mode to Java
         lineNumbers: true,   // Show line numbers
     });
     editor.setSize("100%", "100%");
+
 </script>
 
 <script>

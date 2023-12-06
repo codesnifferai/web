@@ -39,6 +39,7 @@
 
 .CodeMirror {
     height: auto;
+    color: #333;
 }
 
 .panel {
@@ -50,4 +51,5 @@ body {
     width: 100vw;
     padding: 0px;
     margin: 0px;
+    color: black;
 }
