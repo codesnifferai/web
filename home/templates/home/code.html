@@ -29,7 +29,7 @@ performance
 <main role= "main" class="container-fluid h-100">
     <div class="row h-100">
         <div class="col-sm-6" style = "background-color:slategrey; padding: 0">
-            <form class="container h-100" method="post" style = "background-color: ">
+            <form id="code-form" class="container h-100" method="post" style = "background-color: ">
                 {% csrf_token %}
                 <div class="h-100 d-flex flex-column form-group" style= "background-color: " >
                     <div class = "row">
@@ -41,7 +41,7 @@ performance
                         </div>
                     </div>
                     <div class="row flex-grow-1 px-3" style = "">
-                        <textarea id="code-editor" class="form-control" name="code"  placeholder="Type your code" >{{ code }}</textarea>
+                        <textarea id="code-editor" class="form-control" name="code" style="overflow: auto" placeholder="Type your code" >{{ code }}</textarea>
                     </div>
                     <div class=" row justify-content-center " style="background-color: ">
                         <button class="btn btn-light my-3" type="submit" id="teste" style = " width: 90%;font-size:20px"> Smell Code</button>
@@ -103,108 +103,115 @@ performance
                             {% endif %}
                         </div>
 
-                        {% comment %} Each Smell  {% endcomment %}
-                        <div class="row mb-3 " style = "padding:0 ;background-color: ">
-                            <label for="suggestions" style="text-align: center; color: white; font: 32px Roboto, sans-serif ;font-style: normal;font-weight: 700">Suggestions</label>
-                                <div class="col-6 col-xl-3  p-1" style="padding:0">
-                                    {% comment %} Classes' smell {% endcomment %}
-                                    <div>
-                                        <div class ="pt-3 pb-3 bg-black" style = "padding:0; text-align:center">
-                                            <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
-                                                Brain Class
-                                            </p1>
-                                        </div>
-                                        <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
-                                            <p1>&emsp;{%lorem%}</p1>
-                                        </div>
-                                    </div>
+                        {% comment %} Bootstrap' accordion for each smell  {% endcomment %}
+                        <div class=" py-3"style="text-align: center ">
+                            <label for="code" style = "color: white; font: 32px Roboto, sans-serif; ;font-style: normal;font-weight: 700">Learn about them</label>    
+                        </div> 
+                        <div class="accordion" id="accordionCodeSmellClasses">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBrainClass" aria-expanded="true" aria-controls="collapseBrainClass">
+                                    Brain class
+                                </button>
+                                </h2>
+                                <div id="collapseBrainClass" class="accordion-collapse collapse show" data-bs-parent="#accordionCodeSmellClasses">
+                                <div class="accordion-body">
+                                    <ul>
+                                        <li>Split a non cohesive class into two or more cohesive classes. Follow the ‘one class one task’ rule.
+                                        <li>When creating class methods, avoid creating large and complex methods.
+                                        <li>Try refactoring Brain methods by splitting them into multiple methods (refer to guidelines of ‘Brain Method’ on how to split Brain methods).
+                                    </ul>
+                                    <p> For more information, visit <a href="https://docs.embold.io/brain-class/">https://docs.embold.io/brain-class/</a>
                                 </div>
-                                <div class="col-6 col-xl-3  p-1" style="padding:0">
-                                    <div>
-                                        <div class ="pt-3 pb-3 bg-black" style = "padding:0; text-align:center">
-                                            <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
-                                                Data Class
-                                            </p1>
-                                        </div>
-                                        <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
-                                            <p1>&emsp;{%lorem%}</p1>
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="col-6 col-xl-3  p-1" style="padding:0">
-                                    <div>
-                                        <div class ="pt-3 pb-3 bg-black" style = "padding:0; text-align:center">
-                                            <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
-                                                Futile Abstract Pipeli
-                                            </p1>
-                                        </div>
-                                        <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
-                                            <p1>&emsp;{%lorem%}</p1>
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDataClass" aria-expanded="false" aria-controls="collapseDataClass">
+                                    Data class
+                                </button>
+                                </h2>
+                                <div id="collapseDataClass" class="accordion-collapse collapse" data-bs-parent="#accordionCodeSmellClasses">
+                                <div class="accordion-body">
+                                    <p1>To avoid this code smell, ensure that relevant functionality for the data is implemented in methods in the class, and that the data is being stored in the class which is most appropriate for it.</p>
+                                    <p1>For more information, visit <a href="https://code-smells.com/dispensables/data-class">https://code-smells.com/dispensables/data-class</a></p1>
                                 </div>
-                                <div class="col-6 col-xl-3  p-1" style="padding:0">
-                                    <div>
-                                        <div class ="pt-3 pb-3 bg-black" style = "padding:0; text-align:center">
-                                            <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
-                                                Futile Hierarch
-                                            </p1>
-                                        </div>
-                                        <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
-                                            <p1>&emsp;{%lorem%}</p1>
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="col-6 col-xl-3  p-1" style="padding:0">
-                                    <div>
-                                        <div class ="pt-3 pb-3 bg-black" style = "padding:0; text-align:center">
-                                            <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
-                                                God Class
-                                            </p1>
-                                        </div>
-                                        <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
-                                            <p1>&emsp;{%lorem%}</p1>
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Futile Abstract Pipeline
+                                </button>
+                                </h2>
+                                <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionCodeSmellClasses">
+                                <div class="accordion-body">
+                                    
                                 </div>
-                                <div class="col-6 col-xl-3  p-1" style="padding:0">
-                                    <div>
-                                        <div class ="pt-3 pb-3 bg-black" style = "padding:0; text-align:center">
-                                            <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
-                                                Hierarchy Duplication
-                                            </p1>
-                                        </div>
-                                        <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
-                                            <p1>&emsp;{%lorem%}</p1>
-                                        </div>
-                                    </div>
                                 </div>
-                                <div class="col-6 col-xl-3  p-1" style="padding:0">
-                                    <div>
-                                        <div class ="pt-3 pb-3 bg-black" style = "padding:0; text-align:center">
-                                            <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
-                                                Model Class
-                                            </p1>
-                                        </div>
-                                        <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
-                                            <p1>&emsp;{%lorem%}</p1>
-                                        </div>
-                                    </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFutileHierarch" aria-expanded="false" aria-controls="collapseThree">
+                                    Futile Hierarch
+                                </button>
+                                </h2>
+                                <div id="collapseFutileHierarch" class="accordion-collapse collapse" data-bs-parent="#accordionCodeSmellClasses">
+                                <div class="accordion-body">
+                                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
                                 </div>
-                                <div class="col-6 col-xl-3  p-1" style="padding:0">
-                                    <div>
-                                        <div class ="pt-3 pb-3 bg-black" style = "padding:0; text-align:center">
-                                            <p1 style="color: white; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
-                                                Schizofrenic Class
-                                            </p1>
-                                        </div>
-                                        <div class = "border bg-white overflow-auto p-2" style= "max-height: 150px " >
-                                            <p1>&emsp;{%lorem%}</p1>
-                                        </div>
-                                    </div>
                                 </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseGodClass" aria-expanded="false" aria-controls="collapseThree">
+                                    God Class
+                                </button>
+                                </h2>
+                                <div id="collapseGodClass" class="accordion-collapse collapse" data-bs-parent="#accordionCodeSmellClasses">
+                                <div class="accordion-body">
+                                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseHierarchyDuplication" aria-expanded="false" aria-controls="collapseThree">
+                                    Hierarchy Duplication
+                                </button>
+                                </h2>
+                                <div id="collapseHierarchyDuplication" class="accordion-collapse collapse" data-bs-parent="#accordionCodeSmellClasses">
+                                <div class="accordion-body">
+                                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseModelClass" aria-expanded="false" aria-controls="collapseThree">
+                                    Model Class
+                                </button>
+                                </h2>
+                                <div id="collapseModelClass" class="accordion-collapse collapse" data-bs-parent="#accordionCodeSmellClasses">
+                                <div class="accordion-body">
+                                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                                </div>
+                            </div>
+                            <div class="accordion-item">
+                                <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseSchizofrenicClass" aria-expanded="false" aria-controls="collapseThree">
+                                    Schizofrenic Class
+                                </button>
+                                </h2>
+                                <div id="collapseSchizofrenicClass" class="accordion-collapse collapse" data-bs-parent="#accordionCodeSmellClasses">
+                                <div class="accordion-body">
+                                    <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+                                </div>
+                                </div>
+                            </div>
                         </div>
-                    </div>
+                   </div>
                 </div>
             </div>
         </div>
@@ -216,7 +223,7 @@ performance
         mode: "text/x-java", // Set the syntax highlighting mode to Java
         lineNumbers: true,   // Show line numbers
     });
-    editor.setSize("100%", "100%");
+    editor.setSize("100%", "800px");
 
 </script>
 
