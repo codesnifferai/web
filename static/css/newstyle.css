@@ -1,218 +1,53 @@
-html {
-    box-sizing: border-box;
-  }
-  *,
-  *::before,
-  *::after {
-    box-sizing: inherit;
-  }
-  
-
-* {
-    color: white;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    font-family: 'Roboto';
-    display: flex;
-    margin: 0;
-    padding: 0;
-    align-items: stretch;
-    font-style: normal;
-    font-weight: 400;
-    position: relative;
-    height: 100vh;
-    overflow: hidden;
-}
-
-h1.logo-item {
-    color: var(--text, #FFF);
-    text-align: center;
-    line-height: normal;
-    margin-left: 16px;
-    font-weight: 700;
-}
-
-.logo-container {
-    margin-top: 28px;
-    display: flex;
-    align-items: center;
-    flex-shrink: 0;
-    flex: 0 0 auto;
-}
-
-ul {
-    list-style-type: none;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-    flex: 1;
-}
-
-ul, .logo-container {
-    margin-left: 50px;
-    margin-right: 50px;
-}
-
-#circle-logo {
-    fill: var(--text, #FFF);
-    width: 64px;
-    height: 64px;
-    flex-shrink: 0;
-}
-
-#java-nose-logo {
-    width: 37.266px;
-    height: 50.753px;
-    flex-shrink: 0;
-}
-
-.logo-image {
-    width: 64px;
-    height: 64px;
-    flex-shrink: 0; 
-}
-
-.logo-item {
-    flex: 0;
-}
-
-.ul-container {
-    display: flex;
-    flex-direction: column;
-}
-
-.panel-left {
-    align-items: stretch;
-    display: flex;
-    flex-direction: column;
-    background-color: rgb(17, 17, 17);
-    flex: 1;
-    z-index: 1;
-}
-
-.panel-right {
-    border: 2px soled red;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--accent, #1759B0);
-    flex: 0 0 45%;
-}
-
-#github-logo img {
-    width: 64px;
-    height: 64px;
-    flex-shrink: 0;
-}
-
-#github-logo {
-    margin-top: 35px;
-    margin-right: 50px;
-    align-items: flex-end;
-    width: 64px;
-    height: 64px;
-    text-decoration: none;
-}
-
-#try-it {
-    width: 180px;
-    height: 84px;
-    background-color: #ffaa2f;
-    border-radius: 5px;
-    text-decoration: none;
-    text-align: center;
-    line-height: 84px;
-    color: #171717;
-}
-
-#rest-api {
-    width: 180px;
-    height: 84px;
-    background-color: transparent;
-    border-radius: 5px;
-    text-decoration: none;
-    text-align: center;
-    line-height: 84px;
-    color: #fff;
-    border: 3px solid #fff;
-}
-
-#learn-more {
-    text-decoration: none;
-    color: #fff;
-}
-
-.buttons-container a {
-    margin-top: 14px;
-    margin-bottom: 14px;
-}
-
-.font-header {
-    font-family: 'Roboto', sans-serif;
-    font-size: 32px;
-    font-weight: 700;
-}
-
-.font-normal {
-    font-family: 'Roboto', sans-serif;
-    font-size: 18px;
-    font-weight: 400;
-}
-
 .font-logo {
     font-family: 'Roboto', sans-serif;
-    font-size: 64px;
+    font-size: 75px;
     font-weight: 700;
+    color:white;
+    letter-spacing: 0px;
+    word-spacing: -15px;
 }
 
-li .font-header {
-    color: #EC2024;
+.font-topic {
+    font-family: 'Roboto', sans-serif;
+    font-size: 32px;
+    font-weight: 600;
+    
 }
 
-li {
-    text-decoration: none;
+.red{
+    color: red
 }
 
-.block {
-    display: block;
+.white{
+    color: white
 }
 
-.github-container {
-    display: flex;
-    justify-content: flex-end;
-    flex: 0 0 auto;
+.black{
+    color:black
 }
 
-.buttons-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
+
+
+.no-underline{
+    text-decoration:none
 }
 
-.color {
-    background: rgba(236, 32, 36, 0.40);
-    top: -32%;
-    padding-top: 44%; /* This makes the height equal to the width */
-    left: -13%;
-    filter: blur(100px);
+.bg-blue{
+   background-color: #1659b0
+}
+.bg-yellow{
+    background-color: #ffaa30;
 }
 
-.color, .color2 {
-    width: 44%;
-    border-radius: 50%;
-    position: absolute;
-    z-index: -1;
+.font-paragraph {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    font-weight: 200;
+    color: white
 }
 
-.color2 {
-    overflow: hidden;
-    padding-bottom: 44%;
-    background: rgba(12, 138, 199, 0.40);;
-    filter: blur(150px);
-    top: 80%;
-    left: -8%;
+.set-bg-img{
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
 }
