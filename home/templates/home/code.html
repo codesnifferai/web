@@ -23,7 +23,7 @@ Smells:
 <main role= "main" class="container-fluid h-100">
     <div class="row h-100">
         <div class="col-sm-6 " style = "background-color:slategrey; padding: 0; max-height: 100vh">
-            <form class="container px-3 h-100" method="post" style = "background-color: ">
+            <form id="code-form" class="container px-3 h-100" method="post" style = "background-color: " onkeyup= "saveValue(this)">
                 {% csrf_token %}
                 <div class="h-100 d-flex flex-column form-group" style= "background-color: " >
                     <div class = "row">
@@ -38,7 +38,7 @@ Smells:
                     <textarea id="code-editor" class="form-control" name="code"  placeholder="Type your code" >{{ code }}</textarea>
                     {% comment %} </div>     {% endcomment %}
                     <div class=" row justify-content-center " style="background-color: ">
-                        <button class="btn btn-light my-3" type="submit" id="teste" style = " width: 90%;font-size:20px"> Smell Code</button>
+                        <button class="btn btn-light my-3" type="submit" id="teste" style = " width: 90%;font-size:20px" onclick= "setValue()"> Smell Code</button>
                     </div>
                 </div> 
             </form>
@@ -49,54 +49,23 @@ Smells:
                 <div class=" py-3"style="text-align: center ">
                     <label for="code" style = "color: white; font: 32px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
                         CodeSnifferAI
-                    </label>    
+                    </label>
+                    {% comment %} <p id= "terminal" >terminal<p>     {% endcomment %}
                 </div> 
 
                 <div class ="overflow-auto"  style="flex:1">
                     <div class = "row px-3" style="background-color: ">
-                        
-                        {% comment %} Chart {% endcomment %}
-                        {% comment %}
                         <div class="container mb-3 d-flex flex-column" style = "padding:0 ;background-color: white">
                             <div class ="p-3">
                                 <p1 style="color: black; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
-                                    Code Comparison
+                                    Code Smells result
                                 </p1>
                             </div>
+                            {% if labels %}
                             <div class="border" style="flex:1 ">
-                                <canvas id="myChart" style="width:100%;max-width:600px"></canvas>
+                                <canvas id="myChart" style="width:100%;max-width:100%"></canvas>
                             </div>
-                        </div>
-                        {% endcomment %} 
-                        {% comment %} Data colected {% endcomment %}
-                        <div class = "container mb-3" style = "padding:0 ;background-color: white">
-                            <div class =" p-3">
-                                <p1 style="color: black; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
-                                    Smell analisis
-                                </p1>
-                            </div>
-                            {% if code_analysis_result %}
-                                <div class = "border" style = "background-color: ">
-                                    {% for key, values in code_analysis_result.items %}
-                                        <div class = "row mx-2 my-2" style = "padding:0">
-                                            <div class = " col-4 py-2" style= "background-color: ">
-                                                <p1 >{{ key }}</p1>
-                                            </div>
-                                            <div class = "col-8 pr-5 d-flex justify-content-center align-items-center" style= " padding: 0; background-color: ">
-                                                <p1 class= "" style="color: CornflowerBlue">{{ values|floatformat:2 }}</p1>
-
-                                                <div class = "border d-flex justify-content-start align-items-center h-100 w-100  " >
-                                                    <div class=" mx-2" style="background-color: PaleGreen; width: 100%; height:50%; padding: 0"></div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    {% endfor %}
-                                </div>
-                            {% else %}
-                                <p style= "height: 200px">
-                                    No data are available.
-                                </p>
-                            {% endif %}
+                            {% endif%}
                         </div>
 
                         {% comment %} Bootstrap' accordion for each smell  {% endcomment %}
@@ -216,23 +185,41 @@ Smells:
 <script>
     var editor = CodeMirror.fromTextArea(document.getElementById("code-editor"), {
         value: "public class Example {\n}\n",
-        mode: "text/x-java", // Set the syntax highlighting mode to Java
-        lineNumbers: true,   // Show line numbers
+        mode: "text/x-java", 
+        lineNumbers: true,   
     });
-    editor.setSize("100%", "800px");
+    editor.setSize("100%", "100%");
 
 </script>
 
 <script>
-    const labels = [
-        "readability",
-        "consistency",
-        "modularity",
-        "maintainability",
-        "testability",
-        "performance",];
 
-    const values = [55, 49, 44, 24, 15,12,12,13];
+        setEditorValue()
+        
+        function setEditorValue(){
+            form = document.getElementById("code-form")
+            editor.getDoc().setValue(getSavedValue(form.id));
+        }
+
+        function saveValue(e){
+            var id = e.id; 
+            var val = editor.getValue(); 
+            localStorage.setItem(id, val);
+        }
+
+        function getSavedValue  (v){
+            if (!localStorage.getItem(v)) {
+                return "public class main(){\n\tSystem.outprintln(\"hello, world !\"\)\n}"; 
+            }
+            return localStorage.getItem(v);
+        }
+</script>
+
+<script>
+    const labels = {{labels | safe}}
+
+    const values = {{data | safe}}
+    
     const opBg = 1
     const bgColor = [
         'rgba(255, 99, 132, '+opBg+')',
@@ -244,32 +231,18 @@ Smells:
         'rgba(201, 203, 207, '+opBg+')'];
     
     const opBd = 0.2
-    const bdColor = [
-        'rgb(255, 99, 132,'+opBd+')',
-        'rgb(255, 159, 64,'+opBd+')',
-        'rgb(255, 205, 86,'+opBd+')',
-        'rgb(75, 192, 192,'+opBd+')',
-        'rgb(54, 162, 235,'+opBd+')',
-        'rgb(153, 102, 255,'+opBd+')',
-        'rgb(201, 203, 207,'+opBd+')']
+    const bdColor = bgColor
 
     const dataset1 = {
         axis: 'y',
-        label:'code 1.0',
-        backgroundColor: bgColor,
-        data: values,
-        borderColor: bdColor}
-    
-    const dataset2 = {
-        axis: 'y',
-        label:'code 1.1',
+        label:'Your code',
         backgroundColor: bgColor,
         data: values,
         borderColor: bdColor}
         
     const data = {
         labels: labels,
-        datasets: [dataset1,dataset2]
+        datasets: [dataset1]
     }
     
     const config = {
@@ -287,10 +260,9 @@ Smells:
                 legend:{
                     position:'bottom',
                 }
-            }
+            },
         }
-        }
-    
+    }
     new Chart("myChart",config); 
 </script>
 

@@ -11,16 +11,23 @@ from .models import CodeSnippet, Scores
 import pandas as pd
 from chartkick.django import BarChart, PieChart
 
+from django.shortcuts import render
+
 @csrf_exempt
 def code(request):
-
+    
+    
     unit_chart = "No codes to check. Send the code in the text box."
-    code = None
+    if 'code' in locals():
+        print(f"code: {code}")
+    else:
+        print("create code")
+        code = None
+
     template = loader.get_template("home/code.html")
 
     if request.POST:
         code = request.POST.get('code')
-
         cs = CodeSnippet()
         cs.code = code
         cs.source = "web"
@@ -29,7 +36,7 @@ def code(request):
         try:
             code_analysis_result = Sniffer.CodeAnalysis(code)
             for d in code_analysis_result:
-                print(d)
+                # print(d)
                 scores = Scores()
                 scores.name = d
                 scores.code = cs
@@ -39,6 +46,18 @@ def code(request):
             result = Sniffer.CodeAnalysis(code)
             result_gtz = {key: result[key] for key in result if result[key] > 0}
             unit_chart = PieChart(result_gtz, donut=True, percent=True)
+
+            labels = []
+            data = []
+
+            for d in code_analysis_result:
+                labels.append(d)
+                data.append(code_analysis_result[d])
+
+            return render(request, 'home/code.html', {
+                'labels': labels,
+                'data': data,
+            })
         except Exception as error:
             unit_chart = error
 
@@ -54,6 +73,10 @@ def code(request):
         "form": HomeForm(),
         "code": code,
     }
+
+    
+
+
 
     return HttpResponse(template.render(context, request))
 def index(request):
