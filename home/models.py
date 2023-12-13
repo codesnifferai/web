@@ -6,6 +6,7 @@ class CodeSnippet(models.Model):
     id = models.AutoField(primary_key=True)
     code = models.TextField(null=False)
     source = models.CharField(max_length=60, null=False)
+    session_key = models.CharField(max_length=60, null=True)
     created_at = models.DateTimeField(default=timezone.now)
     udpated_at = models.DateTimeField(default=timezone.now)
 

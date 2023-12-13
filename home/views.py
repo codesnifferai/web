@@ -28,9 +28,18 @@ def code(request):
 
     if request.POST:
         code = request.POST.get('code')
+
+        session_key = request.session.session_key
+        if session_key is None:
+            # Se a session_key não existir, você pode forçar a criação de uma nova sessão
+            request.session.create()
+            session_key = request.session.session_key
+
+
         cs = CodeSnippet()
         cs.code = code
         cs.source = "web"
+        cs.session_key = session_key
         cs.save()
 
         try:
