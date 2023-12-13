@@ -17,13 +17,19 @@ MidnightBlue
 {% comment %} 
 Smells:
 
+readability
+consistency
+modularity
+maintainability
+testability
+performance
 {% endcomment %}
 
 
 <main role= "main" class="container-fluid h-100">
     <div class="row h-100">
-        <div class="col-sm-6 " style = "background-color:slategrey; padding: 0; max-height: 100vh">
-            <form class="container px-3 h-100" method="post" style = "background-color: ">
+        <div class="col-sm-6" style = "background-color:slategrey; padding: 0">
+            <form id="code-form" class="container h-100" method="post" style = "background-color: ">
                 {% csrf_token %}
                 <div class="h-100 d-flex flex-column form-group" style= "background-color: " >
                     <div class = "row">
@@ -34,9 +40,9 @@ Smells:
                             <label class="title-font" for="code" style="background-color: ;">Java Class</label>
                         </div>
                     </div>
-                    {% comment %} <div class = "px-3" style = "flex-grow:1; max-height: 80%"> {% endcomment %}
-                    <textarea id="code-editor" class="form-control" name="code"  placeholder="Type your code" >{{ code }}</textarea>
-                    {% comment %} </div>     {% endcomment %}
+                    <div class="row flex-grow-1 px-3" style = "">
+                        <textarea id="code-editor" class="form-control" name="code" style="overflow: auto" placeholder="Type your code" >{{ code }}</textarea>
+                    </div>
                     <div class=" row justify-content-center " style="background-color: ">
                         <button class="btn btn-light my-3" type="submit" id="teste" style = " width: 90%;font-size:20px"> Smell Code</button>
                     </div>
@@ -44,14 +50,14 @@ Smells:
             </form>
         </div>
         <div class="col-sm-6 h-100" style = "padding: 0;background-color: #1759B0">
-            <div class="container px-3 h-100 d-flex flex-column overflow-hidden" style= "background-color: " >
+            <div class="container h-100 d-flex flex-column overflow-hidden" style= "background-color: " >
                 
+                {% comment %} Title CodeSnifferAI {% endcomment %}
                 <div class=" py-3"style="text-align: center ">
-                    <label for="code" style = "color: white; font: 32px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
-                        CodeSnifferAI
-                    </label>    
+                    <label for="code" style = "color: white; font: 32px Roboto, sans-serif; ;font-style: normal;font-weight: 700">CodeSnifferAI</label>    
                 </div> 
 
+                {% comment %} Container para conteudo de CodeSnifferAI {% endcomment %} 
                 <div class ="overflow-auto"  style="flex:1">
                     <div class = "row px-3" style="background-color: ">
                         
@@ -69,41 +75,42 @@ Smells:
                         </div>
                         {% endcomment %} 
                         {% comment %} Data colected {% endcomment %}
-                        <div class = "container mb-3" style = "padding:0 ;background-color: white">
-                            <div class =" p-3">
+                        <div class = "container mb-3" style = "padding:0; background-color: white">
+                            <div class ="p-3">
                                 <p1 style="color: black; font: 18px Roboto, sans-serif; ;font-style: normal;font-weight: 700">
                                     Smell analisis
                                 </p1>
                             </div>
-                            {% if code_analysis_result %}
-                                <div class = "border" style = "background-color: ">
-                                    {% for key, values in code_analysis_result.items %}
-                                        <div class = "row mx-2 my-2" style = "padding:0">
-                                            <div class = " col-4 py-2" style= "background-color: ">
-                                                <p1 >{{ key }}</p1>
-                                            </div>
-                                            <div class = "col-8 pr-5 d-flex justify-content-center align-items-center" style= " padding: 0; background-color: ">
-                                                <p1 class= "" style="color: CornflowerBlue">{{ values|floatformat:2 }}</p1>
+                            {% comment %} {% if code_analysis_result %}
+                            <div class = "border" style = "background-color: ">
+                                {% for key, values in code_analysis_result.items %}
+                                    <div class = "row mx-2 my-2" style = "padding:0">
+                                        <div class = " col-4 py-2" style= "background-color: ">
+                                            <p1 >{{ key }}</p1>
+                                        </div>
+                                        <div class = "col-8 pr-5 d-flex justify-content-center align-items-center" style= " padding: 0; background-color: ">
+                                            <p1 class= "" style="color: CornflowerBlue">{{ values|floatformat:2 }}</p1>
 
-                                                <div class = "border d-flex justify-content-start align-items-center h-100 w-100  " >
-                                                    <div class=" mx-2" style="background-color: PaleGreen; width: 100%; height:50%; padding: 0"></div>
-                                                </div>
+                                            <div class = "border d-flex justify-content-start align-items-center h-100 w-100  " >
+                                                <div class=" mx-2" style="background-color: PaleGreen; width: 100%; height:50%; padding: 0"></div>
                                             </div>
                                         </div>
-                                    {% endfor %}
-                                </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
                             {% else %}
-                                <p style= "height: 200px">
-                                    No data are available.
-                                </p>
-                            {% endif %}
+                            <p style= "height: 200px">No data is available.</p>
+                            {% endif %} {% endcomment %}
+                            <div class="pb-2" id="unit-chart">
+                                {{ unit_chart }}
+                            </div>
                         </div>
 
                         {% comment %} Bootstrap' accordion for each smell  {% endcomment %}
                         <div class=" py-3"style="text-align: center ">
                             <label for="code" style = "color: white; font: 32px Roboto, sans-serif; ;font-style: normal;font-weight: 700">Learn about them</label>    
                         </div> 
-                        <div class="accordion" id="accordionCodeSmellClasses">
+                        <div class="accordion mb-2" id="accordionCodeSmellClasses">
                             <div class="accordion-item">
                                 <h2 class="accordion-header">
                                 <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseBrainClass" aria-expanded="true" aria-controls="collapseBrainClass">
@@ -220,7 +227,7 @@ Smells:
         lineNumbers: true,   // Show line numbers
     });
     editor.setSize("100%", "800px");
-
+    console.log("{{code_analysis_result}}")
 </script>
 
 <script>

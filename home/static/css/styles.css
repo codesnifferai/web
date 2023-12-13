@@ -53,3 +53,7 @@ body {
     margin: 0px;
     color: black;
 }
+
+#unit-chart {
+    background-color: aquamarine;
+}

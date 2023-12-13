@@ -16,6 +16,7 @@ def code(request):
 
     unit_chart = "No codes to check. Send the code in the text box."
     code = None
+    code_analysis_result = None
     template = loader.get_template("home/code.html")
 
     if request.POST:
@@ -49,6 +50,7 @@ def code(request):
     # df = pd.DataFrame(scores)
     cumulative_chart = BarChart(cumulative_dic, colors= [["#DFFF00", "#FFBF00", "#FF7F50", "#DE3163", "#9FE2BF", "#40E0D0", "#6495ED", "#CCCCFF"]])
     context = {
+        "code_analysis_result": code_analysis_result,
         "cumulative_chart": cumulative_chart,
         "unit_chart": unit_chart,
         "form": HomeForm(),
