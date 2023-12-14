@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-
+from django.http import HttpResponseNotFound
 from django.views.decorators.csrf import csrf_exempt
 from django.db.models import Avg, Count
 from django.http import HttpResponse
@@ -106,3 +106,11 @@ def index(request):
         'df_labels': df_labels
     }
     return HttpResponse(template.render(context, request))
+
+def custom_404(request, exception):
+    template = loader.get_template("home/page_not_found.html")
+    context = {
+    }
+
+    return HttpResponse(template.render(context, request))
+    # return HttpResponseNotFound('<h1>Página não encontrada</h1>')
