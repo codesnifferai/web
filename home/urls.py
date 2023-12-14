@@ -2,6 +2,8 @@ from django.urls import path, include
 
 from . import views
 from home.api import views as api_view
+from django.conf import settings
+from django.conf.urls.static import static
 # from rest_framework import routers
 # from home.api import views as HomeApi
 # route = routers.DefaultRouter()
@@ -16,4 +18,4 @@ urlpatterns = [
     path('api/v1/codesnifferai/', api_view.HomeAPIVew.as_view(), name="CodeSnifferAi"),
 
     # path('', include(route.urls))
-]
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
