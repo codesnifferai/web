@@ -109,5 +109,6 @@ body {
 }
 
 .CodeMirror{
-    padding: 20px!important
+    padding: 20px!important;
+    min-height: 500px;
 }
