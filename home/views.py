@@ -45,7 +45,7 @@ def code(request):
         try:
             code_analysis_result = Sniffer.CodeAnalysis(code)
             for d in code_analysis_result:
-                # print(d)
+                print(d)
                 scores = Scores()
                 scores.name = d
                 scores.code = cs
@@ -60,8 +60,11 @@ def code(request):
             data = []
 
             for d in code_analysis_result:
-                labels.append(d)
-                data.append(code_analysis_result[d])
+                if d in ["Model Class", "Data Class", "Schizofrenic Class", "Futile Abstract Pipeline"]:
+                    labels.append(d)
+                    data.append(code_analysis_result[d])
+
+            print(labels)
 
             return render(request, 'home/code.html', {
                 'labels': labels,
